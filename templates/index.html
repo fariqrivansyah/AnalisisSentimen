@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis IMDB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Analisis Sentimen IMDB</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="review">Masukkan Review:</label>
+                        <textarea class="form-control" name="review" rows="5" placeholder="Ketik review di sini..." required>{{ review_text }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3 w-100">Prediksi Sentimen</button>
+                </form>
+
+                {% if prediction %}
+                <div class="alert mt-4 {% if prediction == 'Positif' %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+                    Prediksi Sentimen: <strong>{{ prediction }}</strong>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
